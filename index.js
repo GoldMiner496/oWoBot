@@ -6,6 +6,7 @@ const config = require('./config.json')
 const hasEmoteRegex = /<a?:.+:\d+>/gm
 const emoteRegex = /<:(\w+):(\d+)>/gm
 const animatedEmoteRegex = /<a:.+:(\d+)>/gm
+const linkRegex = new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?([^ ])+");
 
 const client = new Discord.Client();
 
@@ -30,7 +31,12 @@ client.on('message', msg => {
                 msg.channel.send(`<:${emoji[1]}:${emoji[2]}>`) //WIP -- just replies the emoji for now
                 return
             }
+            else if (linkRegex.test(msg.content)) {
+                console.log("Link Detected");
+                return
+            }
             else {
+                console.log("Nothing Detected");
                 const exampleEmbed = new Discord.MessageEmbed()
                     .setColor('#0099ff')
                     .setAuthor(msg.author.username, msg.author.avatarURL())
