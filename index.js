@@ -14,7 +14,7 @@ client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 });
 
-//Debug boi
+//Debug log -- Prints all messages to console
 client.on('message', message => {
     console.log(message.content);
 });
