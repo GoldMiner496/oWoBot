@@ -9,12 +9,12 @@ const animatedEmoteRegex = /<a:.+:(\d+)>/gm
 
 const client = new Discord.Client();
 
-//Ready print to log
+//Print to log when ready
 client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 });
 
-//Debug boi
+//Debug log -- Prints all messages to console
 client.on('message', message => {
     console.log(message.content);
 });
