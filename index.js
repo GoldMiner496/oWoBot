@@ -13,6 +13,7 @@ const client = new Discord.Client();
 //Print to log when ready
 client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
+    console.log(config.chance)
 });
 
 //Debug log -- Prints all messages to console
@@ -22,7 +23,7 @@ client.on('message', message => {
 
 //actual owoify
 client.on('message', msg => {
-    if (1 == 1) {                                              //RNG Element (random.int(min = 0, max = 1))
+    if ((random.int(min = 0, max = config.chance)) == 1) {                                              //RNG Element (random.int(min = 0, max = 1))
         if (!msg.author.bot) {                                 //Check if a user (not bot) sent the message
             if (owoify(msg.content) === msg.content) return;   //If the message would be the same owo'd, leave it.
             else if (emoji = emoteRegex.exec(msg)) {           //Check for emoji
